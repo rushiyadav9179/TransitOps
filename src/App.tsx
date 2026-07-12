@@ -11,6 +11,7 @@ import { Trips } from './pages/Trips';
 import { Maintenance } from './pages/Maintenance';
 import { Expenses } from './pages/Expenses';
 import { Reports } from './pages/Reports';
+
 import { AccessControl } from './pages/AccessControl';
 
 // ==========================================
@@ -70,8 +71,7 @@ const AppLayout: React.FC = () => {
         return 'Fleet Audits & ROI';
       case '/access-control':
         return 'Access Control';
-      default:
-        return 'TransitOps';
+
     }
   };
 
@@ -203,3 +203,5 @@ const App: React.FC = () => {
 };
 
 export default App;
+
+
