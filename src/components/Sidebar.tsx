@@ -54,16 +54,118 @@ export const Sidebar: React.FC = () => {
   const pendingCount = userAccounts.filter(a => a.status === 'Pending').length;
 
   // RBAC Access Control lists for sidebar links
-  const links = [
-    { to: '/', label: 'Dashboard', icon: LayoutDashboard, roles: ['Fleet Manager', 'Driver', 'Safety Officer', 'Financial Analyst'] },
-    { to: '/vehicles', label: 'Vehicles', icon: Truck, roles: ['Fleet Manager'] },
-    { to: '/drivers', label: 'Drivers', icon: Users, roles: ['Fleet Manager', 'Safety Officer'] },
-    { to: '/trips', label: 'Trips & Dispatch', icon: MapPin, roles: ['Fleet Manager', 'Driver'] },
-    { to: '/maintenance', label: 'Maintenance', icon: Wrench, roles: ['Fleet Manager'] },
-    { to: '/expenses', label: 'Fuel & Expenses', icon: Receipt, roles: ['Fleet Manager', 'Driver', 'Financial Analyst'] },
-    { to: '/reports', label: 'Reports & ROI', icon: FileBarChart, roles: ['Fleet Manager', 'Financial Analyst'] },
-    { to: '/access-control', label: 'Access Control', icon: UserCheck, roles: ['Fleet Manager'] },
-  ];
+ const links = [
+
+  // ==============================
+  // Dashboard
+  // ==============================
+
+  {
+    to: '/',
+    label: 'Dashboard',
+    icon: LayoutDashboard,
+    roles: [
+      'Fleet Manager',
+      'Driver',
+      'Safety Officer',
+      'Financial Analyst'
+    ]
+  },
+
+  // ==============================
+  // Fleet Manager
+  // ==============================
+
+  {
+    to: '/vehicles',
+    label: 'Vehicle Management',
+    icon: Truck,
+    roles: ['Fleet Manager']
+  },
+
+  {
+    to: '/drivers',
+    label: 'Driver Management',
+    icon: Users,
+    roles: ['Fleet Manager']
+  },
+
+  {
+    to: '/trips',
+    label: 'Trip Dispatch',
+    icon: MapPin,
+    roles: ['Fleet Manager']
+  },
+
+  {
+    to: '/maintenance',
+    label: 'Maintenance',
+    icon: Wrench,
+    roles: ['Fleet Manager']
+  },
+
+  {
+    to: '/expenses',
+    label: 'Expenses',
+    icon: Receipt,
+    roles: ['Fleet Manager']
+  },
+
+  {
+    to: '/reports',
+    label: 'Reports',
+    icon: FileBarChart,
+    roles: ['Fleet Manager']
+  },
+
+  {
+    to: '/access-control',
+    label: 'Access Control',
+    icon: UserCheck,
+    roles: ['Fleet Manager']
+  },
+
+  // ==============================
+  // Driver
+  // ==============================
+
+  {
+    to: '/trips',
+    label: 'My Trips',
+    icon: MapPin,
+    roles: ['Driver']
+  },
+
+  // ==============================
+  // Safety Officer
+  // ==============================
+
+  {
+    to: '/drivers',
+    label: 'Driver Safety',
+    icon: Users,
+    roles: ['Safety Officer']
+  },
+
+  // ==============================
+  // Financial Analyst
+  // ==============================
+
+  {
+    to: '/expenses',
+    label: 'Financial Expenses',
+    icon: Receipt,
+    roles: ['Financial Analyst']
+  },
+
+  {
+    to: '/reports',
+    label: 'Financial Reports',
+    icon: FileBarChart,
+    roles: ['Financial Analyst']
+  }
+
+];
 
   const allowedLinks = links.filter(link => link.roles.includes(role));
 

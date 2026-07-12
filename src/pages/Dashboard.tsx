@@ -1,5 +1,8 @@
 import React, { useState, useMemo } from 'react';
 import { useApp } from '../context/AppContext';
+import { DriverDashboard } from "./DriverDashboard.jsx";
+import { SafetyDashboard } from "./SafetyDashboard";
+import { FinancialDashboard } from "./FinancialDashboard";
 import { 
   BarChart, Bar, XAxis, YAxis, Tooltip, Legend, ResponsiveContainer,
   PieChart, Pie, Cell, LineChart, Line, CartesianGrid
@@ -10,8 +13,27 @@ import {
 } from 'lucide-react';
 
 export const Dashboard: React.FC = () => {
-  const { vehicles, drivers, trips, maintenanceLogs, fuelLogs, expenses, notifications } = useApp();
+const {
+    currentUser,
+    vehicles,
+    drivers,
+    trips,
+    maintenanceLogs,
+    fuelLogs,
+    expenses,
+    notifications
+  } = useApp();
+ if (currentUser?.role === "Driver") {
+    return <DriverDashboard />;
+}
 
+if (currentUser?.role === "Safety Officer") {
+    return <SafetyDashboard />;
+}
+
+if (currentUser?.role === "Financial Analyst") {
+    return <FinancialDashboard />;
+}
   // Filter States
   const [selectedType, setSelectedType] = useState<string>('All');
   const [selectedRegion, setSelectedRegion] = useState<string>('All');
