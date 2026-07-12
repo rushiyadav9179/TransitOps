@@ -12,6 +12,8 @@ import { Maintenance } from './pages/Maintenance';
 import { Expenses } from './pages/Expenses';
 import { Reports } from './pages/Reports';
 
+import { AccessControl } from './pages/AccessControl';
+
 // ==========================================
 // ROUTE PROTECTION & RBAC WRAPPERS
 // ==========================================
@@ -67,8 +69,9 @@ const AppLayout: React.FC = () => {
         return 'Operational Expenses';
       case '/reports':
         return 'Fleet Audits & ROI';
-      default:
-        return 'TransitOps';
+      case '/access-control':
+        return 'Access Control';
+
     }
   };
 
@@ -166,6 +169,14 @@ const AppLayout: React.FC = () => {
                 </ProtectedRoute>
               } 
             />
+            <Route 
+              path="/access-control" 
+              element={
+                <ProtectedRoute allowedRoles={['Fleet Manager']}>
+                  <AccessControl />
+                </ProtectedRoute>
+              } 
+            />
             <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>
         </main>
@@ -192,3 +203,5 @@ const App: React.FC = () => {
 };
 
 export default App;
+
+
